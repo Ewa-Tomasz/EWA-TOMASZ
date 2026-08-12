@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ewa & Tomek | 4 września 2027</title>
+  <meta name="description" content="Strona naszego ślubu Ewy i Tomka — 4 września 2027.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <p class="eyebrow">ZAPRASZAMY NA NASZ DZIEŃ</p>
+      <h1>Ewa <span>&</span> Tomek</h1>
+      <p class="date">4 WRZEŚNIA 2027</p>
+      <p class="place">Gościniec Paradise • Przeczyce</p>
+      <a class="button" href="#zdjecia">Dodaj zdjęcia</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p class="eyebrow">NASZA HISTORIA</p>
+      <h2>Najpiękniejszy dzień chcemy przeżyć razem z Wami</h2>
+      <p>
+        Dziękujemy, że będziecie z nami. Ta strona powstała po to, aby zebrać
+        wszystkie ważne informacje i zachować wspomnienia z naszego ślubu.
+      </p>
+    </section>
+
+    <section class="details">
+      <div class="card">
+        <span class="icon">♡</span>
+        <h3>Kiedy?</h3>
+        <p>4 września 2027</p>
+      </div>
+      <div class="card">
+        <span class="icon">⌂</span>
+        <h3>Gdzie?</h3>
+        <p>Gościniec Paradise<br>Przeczyce</p>
+      </div>
+      <div class="card">
+        <span class="icon">∞</span>
+        <h3>Z kim?</h3>
+        <p>Z naszymi najbliższymi<br>i najwspanialszymi gośćmi</p>
+      </div>
+    </section>
+
+    <section class="countdown-section">
+      <p class="eyebrow">ODLICZAMY</p>
+      <h2>Do naszego „TAK” pozostało</h2>
+      <div class="countdown" id="countdown">
+        <div><strong id="days">--</strong><span>dni</span></div>
+        <div><strong id="hours">--</strong><span>godzin</span></div>
+        <div><strong id="minutes">--</strong><span>minut</span></div>
+        <div><strong id="seconds">--</strong><span>sekund</span></div>
+      </div>
+    </section>
+
+    <section class="schedule">
+      <div class="section-heading">
+        <p class="eyebrow">PLAN DNIA</p>
+        <h2>Ślub i wesele</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="time">DO UZUPEŁNIENIA</span>
+          <div><h3>Ceremonia</h3><p>Godzinę i szczegóły ceremonii wpiszemy tutaj.</p></div>
+        </div>
+        <div class="timeline-item">
+          <span class="time">DO UZUPEŁNIENIA</span>
+          <div><h3>Przyjęcie weselne</h3><p>Wspólne świętowanie, kolacja, muzyka i zabawa.</p></div>
+        </div>
+        <div class="timeline-item">
+          <span class="time">DO UZUPEŁNIENIA</span>
+          <div><h3>Wspomnienia</h3><p>Zachęcamy do dodawania zdjęć z całego dnia.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="photos" id="zdjecia">
+      <div class="photo-box">
+        <p class="eyebrow">WSPÓLNE WSPOMNIENIA</p>
+        <h2>Dodaj swoje zdjęcia</h2>
+        <p>
+          Zeskanuj kod QR telefonem albo kliknij przycisk poniżej.
+          Nie musisz mieć aplikacji — przejdziesz prosto do miejsca, w którym
+          możesz przesłać zdjęcia z naszego ślubu.
+        </p>
+        <div class="qr-wrap">
+          <img src="qr-zdjecia.png" alt="Kod QR do przesyłania zdjęć">
+        </div>
+        <a class="button" href="#" id="uploadButton">📷 Prześlij zdjęcia</a>
+        <p class="small">Kod QR i przycisk zostaną podłączone do naszego bezpłatnego formularza przesyłania zdjęć.</p>
+      </div>
+    </section>
+
+    <section class="thanks">
+      <p class="eyebrow">DZIĘKUJEMY</p>
+      <h2>To dzięki Wam ten dzień będzie jeszcze piękniejszy.</h2>
+      <p>Do zobaczenia 4 września 2027! ♡</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Ewa & Tomek • 04.09.2027</p>
+  </footer>
+
+  <script>
+    const weddingDate = new Date("2027-09-04T16:00:00+02:00").getTime();
+
+    function updateCountdown() {
+      const now = Date.now();
+      const distance = weddingDate - now;
+      if (distance <= 0) {
+        document.getElementById("countdown").innerHTML = "<p class='after'>Dziś jest nasz dzień! ♡</p>";
+        return;
+      }
+      document.getElementById("days").textContent = Math.floor(distance / 86400000);
+      document.getElementById("hours").textContent = Math.floor((distance / 3600000) % 24);
+      document.getElementById("minutes").textContent = Math.floor((distance / 60000) % 60);
+      document.getElementById("seconds").textContent = Math.floor((distance / 1000) % 60);
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // WSTAW TU LINK DO BEZPŁATNEGO FORMULARZA/ŻĄDANIA PLIKÓW:
+    const uploadUrl = "https://YOUR-DROPBOX-FILE-REQUEST-LINK";
+    document.getElementById("uploadButton").href = uploadUrl;
+  </script>
+</body>
+</html>
